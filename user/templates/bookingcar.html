@@ -1,0 +1,247 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Amma Rentals</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    
+    <!-- Custom CSS for additional styling -->
+    <style>
+        /* Custom styles for the table */
+        .custom-table {
+            background-color: #f8f9fa;
+        }
+        
+        .custom-table th {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        /* Custom styles for buttons */
+        .custom-btn {
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .custom-btn-primary {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .custom-btn-danger {
+            background-color: #dc3545;
+            color: #ffffff;
+        }
+    </style>
+        <!-- Include jQuery library -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+        <!-- Include jQuery UI library -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+        <script>
+            $(document).ready(function() {
+                // Configure the datepicker to use the "YYYY-MM-DD" format
+                $("#book_pick_date").datepicker({ dateFormat: 'yy-mm-dd' });
+                $("#book_off_date").datepicker({ dateFormat: 'yy-mm-dd' });
+            });
+        </script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'homepage' %}">AMMA<span>RENTALS</span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="oi oi-menu"></span> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="{% url 'homepage' %}" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="{% url 'bookinglist' %}" class="nav-link">My Bookings</a></li>
+                <li class="nav-item"><a href="{% url 'homepage' %}#about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'homepage' %}#contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+<section >
+    <div class="container mt-5">
+        <h1>Book a Car</h1>
+        <form method="post" action="{% url 'book_car'%}" >
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="car_number">Car Number:</label>
+                <input type="text" class="form-control" id="car_number" name="car_number" value="{{ no}}" required readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="pickup_date">Pickup Date:</label>
+                <input type="date" class="form-control" id="pickup_date" name="pickup_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="return_date">Return Date:</label>
+                <input type="date" class="form-control" id="return_date" name="return_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="total_number_of_days">Total Number of Days:</label>
+                <input type="text" class="form-control" id="total_number_of_days" name="total_number_of_days" required readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Car Price:</label>
+                <input type="text" class="form-control" id="price" name="price" value="{{price}}"required readonly>
+            </div>
+
+            <div class="form-group">
+                <label for="total_price">Total Price:</label>
+                <input type="text" class="form-control" id="total_price" name="total_price" required readonly>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Book Car</button>
+        </form>
+    </div>
+</section>
+<footer class="ftco-footer ftco-bg-dark ftco-section">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2"><a href="#" class="logo">AMMA<span>RENTALS</span></a></h2>
+            <p>"Discover freedom on four wheels. Rent your adventure today."</p>
+            <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+              <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4 ml-md-5">
+            <h2 class="ftco-heading-2">Information</h2>
+            <ul class="list-unstyled">
+              <li><a href="#about" class="py-2 d-block">About</a></li>
+              <li><a href="#service" class="py-2 d-block">Services</a></li>
+              <li><a href="#" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+           <div class="ftco-footer-widget mb-4">
+            <h2 class="ftco-heading-2">Customer Support</h2>
+            <ul class="list-unstyled">
+              <li><a href="#" class="py-2 d-block">FAQ</a></li>
+              <li><a href="#contact" class="py-2 d-block">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Have a Questions?</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li><span class="icon icon-map-marker"></span><span class="text">Karminagar, India</span></li>
+                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+91 9876543210</span></a></li>
+                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">ammarentals@yourdomain.com</span></a></li>
+                </ul>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+                <p>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved 
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+<script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+<script src="{% static 'js/scrollax.min.js' %}"></script>
+<script src="{% static 'js/google-map.js' %}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+<script>
+    // Get references to the relevant form fields
+    const pickupDateField = document.getElementById("pickup_date");
+    const returnDateField = document.getElementById("return_date");
+    const totalDaysField = document.getElementById("total_number_of_days");
+    const carPriceField = document.getElementById("price");
+    const totalPriceField = document.getElementById("total_price");
+
+    // Function to calculate the total number of days and total price
+    function calculateTotal() {
+        const pickupDate = new Date(pickupDateField.value);
+        const returnDate = new Date(returnDateField.value);
+        const carPrice = parseFloat(carPriceField.value);
+
+        if (!isNaN(carPrice) && pickupDate <= returnDate) {
+            const timeDifference = returnDate - pickupDate;
+            const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+            const total = carPrice * daysDifference;
+
+            totalDaysField.value = daysDifference;
+            totalPriceField.value = total.toFixed(2);
+        } else {
+            totalDaysField.value = "";
+            totalPriceField.value = "";
+        }
+    }
+
+    // Add an event listener to the date fields to trigger the calculation
+    pickupDateField.addEventListener("change", calculateTotal);
+    returnDateField.addEventListener("change", calculateTotal);
+    
+    // Initial calculation when the page loads (if default dates are set)
+    calculateTotal();
+</script>
+</body>
+</html>
