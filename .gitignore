@@ -1,23 +1,20 @@
-# Byte-compiled / optimized Python files
+# Ignore Python bytecode files
 __pycache__/
-*.py[cod]
+*.pyc
 
-# Virtual environment
-venv/
-venv*/
-
-# IDE files
-.idea/
-.vscode/
-
-# Database files
+# Ignore Django migration files
+*.log
 *.sqlite3
 
-# Static files directory
-/staticfiles/
+# Ignore static and media files if not needed
+static/
+media/
 
-# Media files directory
-/media/
+# Ignore virtual environments (if used)
+venv/
+env/
+.venv/
 
-# Environment variables file
-.env
+# Ignore other IDE-specific files
+.vscode/
+.idea/
