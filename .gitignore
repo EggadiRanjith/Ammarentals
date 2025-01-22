@@ -18,3 +18,7 @@ env/
 # Ignore other IDE-specific files
 .vscode/
 .idea/
+
+# Ignore CSS files
+*.css
+static/
